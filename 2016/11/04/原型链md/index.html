@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="“web前端, 程序猿, 文艺小青年”" />
+  <meta name="keywords" content="学习笔记," />
 
 
 
@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="##原型链在JavaScript中，每个对象都有一个[[Prototype]]属性，其保存着的地址就构成了对象的原型链。
+[[Prototype]]属性是js编译器在对象被创建时自动添加的，其取值由new运算符的右侧参数决定。字面量的方式可转化为new Obejct();
+var x = new Xzavier();
+vae o = {};  //var o = new Obejct();
+通过对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/11/04/hello-world/index.html">
+<meta property="og:title" content="原型链&原型继承">
+<meta property="og:url" content="http://yoursite.com/2016/11/04/原型链md/index.html">
 <meta property="og:site_name" content="最晚的开始">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-10-29T07:01:16.502Z">
+<meta property="og:description" content="##原型链在JavaScript中，每个对象都有一个[[Prototype]]属性，其保存着的地址就构成了对象的原型链。
+[[Prototype]]属性是js编译器在对象被创建时自动添加的，其取值由new运算符的右侧参数决定。字面量的方式可转化为new Obejct();
+var x = new Xzavier();
+vae o = {};  //var o = new Obejct();
+通过对">
+<meta property="og:updated_time" content="2016-11-03T01:19:08.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="原型链&原型继承">
+<meta name="twitter:description" content="##原型链在JavaScript中，每个对象都有一个[[Prototype]]属性，其保存着的地址就构成了对象的原型链。
+[[Prototype]]属性是js编译器在对象被创建时自动添加的，其取值由new运算符的右侧参数决定。字面量的方式可转化为new Obejct();
+var x = new Xzavier();
+vae o = {};  //var o = new Obejct();
+通过对">
 
 
 
@@ -117,10 +126,10 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/04/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/04/原型链md/"/>
 
 
-  <title> Hello World | 最晚的开始 </title>
+  <title> 原型链&原型继承 | 最晚的开始 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +269,7 @@ Quick">
             
             
               
-                Hello World
+                原型链&原型继承
               
             
           </h1>
@@ -272,11 +281,30 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
+            <time itemprop="dateCreated" datetime="2016-11-04T08:32:48+08:00" content="2016-11-04">
               2016-11-04
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -305,15 +333,128 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>##原型链<br>在<code>JavaScript</code>中，每个对象都有一个<code>[[Prototype]]</code>属性，其保存着的地址就构成了对象的原型链。</p>
+<p><code>[[Prototype]]</code>属性是js编译器在对象被创建时自动添加的，其取值由new运算符的右侧参数决定。字面量的方式可转化为new Obejct();</p>
+<pre><code>var x = new Xzavier();
+vae o = {};  //var o = new Obejct();
+</code></pre><p>通过对象的<code>[[Prototype]]</code>保存对另一个对象的引用，通过这个引用往上进行属性的查找，这就是原型链查找机制。</p>
+<p>对象在查找某个属性的时候，会首先遍历自身的属性，如果没有则会继续查找<code>[[Prototype]]</code>引用的对象，如果再没有则继续查找<code>[[Prototype]].[[Prototype]]</code>引用的对象，依次类推，直到<code>[[Prototype]].….[[Prototype]]</code>为<code>undefined</code></p>
+<p>（<code>Object.prototype的[[Prototype]]</code>就是undefined）</p>
+<pre><code>function Xzavier() {
+    this.name = &apos;xzavier&apos;;
+}
+var x = new Xzavier();
+x.age = 23;
+
+console.log(x.job);  // 获取x的job属性 undefined
+</code></pre><p>1、遍历x对象本身，结果x对象本身没有job属性</p>
+<p>2、找到x的[[Prototype]]，也就是其对应的对象Xzavier.prototype，同时进行遍历。 Xzavier.prototype也没有job属性</p>
+<p>3、找到Xzavier.prototype对象的[[Prototype]]，指向其对应的对象Object.prototype。Object.prototype也没有job属性</p>
+<p>4、寻找Object.prototype的[[Prototype]]属性，返回undefined。</p>
+<p>##函数的变量和内部函数</p>
+<p>###私有变量和内部函数</p>
+<p>私有成员，即定义函数内部的变量或函数，外部无法访问。</p>
+<pre><code>function Xzavier(){
+    var name = &quot;xzavier&quot;; //私有变量
+    var sports = function() {console.log(&apos;basketball&apos;)}; //私有函数 
+}
+var x = new Xzavier();
+x.name;  //undefined
+</code></pre><p>如果要访问，需要对外提供接口。</p>
+<pre><code>function Xzavier(){
+    var name = &quot;xzavier&quot;; //私有变量
+    var sports = function() {console.log(&apos;basketball&apos;)}; //私有函数
+    return{
+        name: name,
+        sports: sports
+    }
+}
+var x = new Xzavier();
+x.name;  //&quot;xzavier&quot;
+</code></pre><p>###静态变量和内部函数</p>
+<p>用点操作符定义的静态变量和内部函数就是实例不能访问到的变量和内部函数。只能通过自身去访问。</p>
+<pre><code>function Xzavier(){
+    Xzavier.name = &quot;xzavier&quot;; //静态变量
+    Xzavier.sports = function() {console.log(&apos;basketball&apos;)}; //静态函数 
+}
+Xzavier.name; //&quot;xzavier&quot;
+var x = new Xzavier();
+x.name;  //undefined
+</code></pre><p>###实例变量和内部函数</p>
+<p>通过this定义给实例使用的属性和方法。</p>
+<pre><code>function Xzavier(){
+    this.name = &quot;xzavier&quot;; //实例变量
+    this.sports = function() {console.log(&apos;basketball&apos;);}; //实例函数 
+}
+Xzavier.name; //undefined
+var x = new Xzavier();
+x.name;  //&quot;xzavier&quot;
+</code></pre><p>##原型链继承<br>有了原型链，就可以借助原型链实现继承。</p>
+<pre><code>function Xzavier() {
+    this.name = &apos;xzavier&apos;;
+    this.sex = &apos;boy&apos;;
+    this.job = &quot;jser&quot;;
+}
+
+function X() {};
+</code></pre><p>X的原型<code>X.prototype</code>原型本身就是一个<code>Object</code>对象。F12打开控制台输入函数，再打印<code>X.prototype:</code></p>
+<pre><code>Object {
+    constructor: X()
+    __proto__: Object
+}
+</code></pre><p><code>prototype</code>本身是一个<code>Object</code>对象的实例，所以其原型链指向的是Object的原型。</p>
+<p><strong>X.prototype = Xzavier.prototype</strong></p>
+<pre><code>X.prototype = Xzavier.prototype;
+</code></pre><p>这样相当于把X的<code>prototype</code>指向了Xzavier的<code>prototyp</code>e；这样只是继承了Xzavier的<code>prototype</code>方法，Xzavier中的自定义方法则不继承。</p>
+<pre><code>X.prototype.love = &quot;dog&quot;;
+</code></pre><p>这样也会改变Xzavier的<code>prototype</code>，所以这样基础就不好。</p>
+<p><strong>X.prototype = new Xzavier()</strong></p>
+<pre><code>X.prototype = new Xzavier();
+</code></pre><p>这样产生一个Xzavier的实例，同时赋值给X的原型，也即<code>X.prototype</code>相当于对象：</p>
+<pre><code>{
+    name: &quot;xzavier&quot;, 
+    sex: &quot;boy&quot;, 
+    job: &quot;jser&quot;,
+    [[Prototype]] : Xzavier.prototype
+}
+</code></pre><p>这样就把Xzavier的原型通过<code>X.prototype.[[Prototype]]</code>这个对象属性保存起来，构成了原型的链接。不过，这样X产生的对象的构造函数发生了改变，因为在X中没有<code>constructor</code>属性，只能从原型链找到<code>Xzavier.prototype</code>，读出<code>constructor:Xzavier。</code></p>
+<pre><code>var x = new X;
+console.log(x.constructor);
+</code></pre><p>输出：</p>
+<pre><code>Xzavier() {
+    this.name = &apos;xzavier&apos;;
+    this.sex = &apos;boy&apos;;
+    this.job = &quot;jser&quot;;
+}
+</code></pre><p>手动改正：</p>
+<pre><code>X.prototype.constructor = X;
+</code></pre><p>这是X的原型就多了个属性constructor，指向X</p>
+<pre><code>function Xzavier() {
+    this.name = &apos;xzavier&apos;;
+    this.sex = &apos;boy&apos;;
+    this.job = &quot;jser&quot;;
+}
+
+function X(){}
+X.prototype = new Xzavier();
+var x = new X()
+x.name  // &quot;xzavier&quot;
+</code></pre><p>###hasOwnProperty<br><code>hasOwnProperty</code>是<code>Object.prototype</code>的一个方法，判断一个对象是否包含自定义属性而不是原型链上的属性。<code>hasOwnProperty</code> 是JavaScript中唯一一个处理属性但是不查找原型链的函数。</p>
+<pre><code>function Xzavier() {
+    this.name = &apos;xzavier&apos;;
+    this.sex = &apos;boy&apos;;
+    this.job = &quot;jser&quot;;
+}
+//给A的原型对象添加属性
+Xzavier.prototype.sports = function() {console.log(&apos;basketball&apos;);};
+
+var x = new Xzavier();
+x.name; // &apos;xzavier&apos;
+&apos;sex&apos; in x; // true
+
+x.hasOwnProperty(&apos;job&apos;); // true
+x.hasOwnProperty(&apos;sports&apos;); // false
+</code></pre><p>当检查对象上某个属性是否存在时，<code>hasOwnProperty</code> 是非常推荐的方法。</p>
 
       
     </div>
@@ -360,21 +501,27 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/04/angular自定义指令/" rel="next" title="前端必须要了解的面试题">
-                <i class="fa fa-chevron-left"></i> 前端必须要了解的面试题
+              <a href="/2016/11/04/前端开发面试题/" rel="next" title="前端面试题">
+                <i class="fa fa-chevron-left"></i> 前端面试题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/04/ionic环境的配置/" rel="prev" title="ionic是基本环境依赖和环境配置">
-                ionic是基本环境依赖和环境配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/04/跨域问题整理/" rel="prev" title="跨域问题">
+                跨域问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +679,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
