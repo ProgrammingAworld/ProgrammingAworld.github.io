@@ -260,7 +260,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/04/gulp--uglify/" itemprop="url">
-                  未命名
+                  gulp-uglify
                 </a>
               
             
@@ -278,6 +278,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/gulp/" itemprop="url" rel="index">
+                    <span itemprop="name">gulp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -303,7 +322,75 @@
       
         
           
-            
+            <p>##简介：##<br>使用gulp-uglify压缩javascript文件，减小文件大小。</p>
+<p>###1、安装nodejs/全局安装gulp/本地安装gulp/创建package.json和gulpfile.js文件###</p>
+<p>###2、本地安装gulp-uglify###</p>
+<ul>
+<li><p>2.1、github：<a href="https://github.com/terinjokes/gulp-uglify" target="_blank" rel="external">https://github.com/terinjokes/gulp-uglify</a></p>
+</li>
+<li><p>2.2、安装：命令提示符执行 cnpm install gulp-uglify -D</p>
+</li>
+<li><p>2.3、注意：没有安装cnpm请使用 npm install gulp-uglify –save-dev。 </p>
+</li>
+<li><p>2.4、说明：–save-dev 保存配置信息至 package.json 的 devDependencies 节点。</p>
+</li>
+</ul>
+<p>###3、配置gulpfile.js###</p>
+<ul>
+<li><p>3.1、基本使用</p>
+<pre><code>var gulp = require(&apos;gulp&apos;),
+    uglify = require(&apos;gulp-uglify&apos;);
+
+gulp.task(&apos;jsmin&apos;, function () {
+    gulp.src(&apos;src/js/index.js&apos;)
+        .pipe(uglify())
+        .pipe(gulp.dest(&apos;dist/js&apos;));
+});
+3.2、压缩多个js文件
+
+var gulp = require(&apos;gulp&apos;),
+    uglify = require(&apos;gulp-uglify&apos;);
+
+gulp.task(&apos;jsmin&apos;, function () {
+    gulp.src([&apos;src/js/index.js&apos;,&apos;src/js/detail.js&apos;]) //多个文件以数组形式传入
+        .pipe(uglify())
+        .pipe(gulp.dest(&apos;dist/js&apos;));
+});
+</code></pre></li>
+<li><p>3.3、匹配符“!”，“<em>”，“*</em>”，“{}”</p>
+<pre><code>var gulp = require(&apos;gulp&apos;),
+    uglify= require(&apos;gulp-uglify&apos;);
+
+gulp.task(&apos;jsmin&apos;, function () {
+    //压缩src/js目录下的所有js文件
+    //除了test1.js和test2.js（**匹配src/js的0个或多个子文件夹）
+    gulp.src([&apos;src/js/*.js&apos;, &apos;!src/js/**/{test1,test2}.js&apos;]) 
+        .pipe(uglify())
+        .pipe(gulp.dest(&apos;dist/js&apos;));
+});
+</code></pre></li>
+<li><p>3.4、指定变量名不混淆改变</p>
+<pre><code>var gulp = require(&apos;gulp&apos;),
+    uglify= require(&apos;gulp-uglify&apos;);
+
+gulp.task(&apos;jsmin&apos;, function () {
+    gulp.src([&apos;src/js/*.js&apos;, &apos;!src/js/**/{test1,test2}.js&apos;])
+        .pipe(uglify({
+            //mangle: true,//类型：Boolean 默认：true 是否修改变量名
+            mangle: {except: [&apos;require&apos; ,&apos;exports&apos; ,&apos;module&apos; ,&apos;$&apos;]}//排除混淆关键字
+        }))
+        .pipe(gulp.dest(&apos;dist/js&apos;));
+});
+</code></pre></li>
+<li>3.5、gulp-uglify其他参数 <a href="https://github.com/terinjokes/gulp-uglify#user-content-options" target="_blank" rel="external">具体参看</a></li>
+</ul>
+<p>var gulp = require(‘gulp’),<br>    uglify= require(‘gulp-uglify’);</p>
+<p>gulp.task(‘jsmin’, function () {<br>    gulp.src([‘src/js/<em>.js’, ‘!src/js/*</em>/{test1,test2}.js’])<br>        .pipe(uglify({<br>            mangle: true,//类型：Boolean 默认：true 是否修改变量名<br>            compress: true,//类型：Boolean 默认：true 是否完全压缩<br>            preserveComments: ‘all’ //保留所有注释<br>        }))<br>        .pipe(gulp.dest(‘dist/js’));<br>});</p>
+<p>###4、执行任务</p>
+<ul>
+<li>4.1、命令提示符执行：gulp jsmin</li>
+</ul>
+
           
         
       
