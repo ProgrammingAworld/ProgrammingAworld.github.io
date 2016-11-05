@@ -259,6 +259,149 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/04/rem实现原理/" itemprop="url">
+                  rem的实现原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
+              2016-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动端布局/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端布局</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##rem自适应布局的回顾总结</p>
+<p><strong>rem自适应原理</strong></p>
+<p>rem是根据html的font-size大小来变化，正是基于这个出发，我们可以在每一个设备下根据设备的宽度设置对应的html字号，从而实现了自适应布局。</p>
+<p><strong>具体的实现方法</strong></p>
+<ul>
+<li><p><strong>使用媒体查询的方法</strong></p>
+<ul>
+<li><p>js方式<br>###获取移动设备宽高的方法：</p>
+<p>  document.documentElement.clientWidth;<br>  document.documentElement.clientHeight;</p>
+</li>
+<li><p>媒体查询来调整字号</p>
+<pre><code>@media only screen and (min-width: 481px) {
+html {
+font-size:94%!important
+}
+}
+
+@media only screen and (min-width: 561px) {
+html {
+font-size:109%!important
+}
+}
+
+@media only screen and (min-width: 641px) {
+html {
+font-size:125%!important
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/04/nginx的基本配置/" itemprop="url">
                   nginx代理的基本配置
                 </a>
@@ -564,8 +707,8 @@ worker_processes  1;
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/angular/" itemprop="url" rel="index">
-                    <span itemprop="name">angular</span>
+                  <a href="/categories/iconic/" itemprop="url" rel="index">
+                    <span itemprop="name">iconic</span>
                   </a>
                 </span>
 
@@ -1011,7 +1154,7 @@ compile:function compile(tElement,tAttrs,transclude){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1019,7 +1162,7 @@ compile:function compile(tElement,tAttrs,transclude){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
