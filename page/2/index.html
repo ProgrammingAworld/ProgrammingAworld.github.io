@@ -259,6 +259,282 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/04/ui-router的使用/" itemprop="url">
+                  ui-router的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
+              2016-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>首先要引入在<code>index.html</code>中引入<code>angular-ui-router.min.js</code>。</li>
+<li>在angular.module(‘myApp’,[‘ui.router’]);中注入ui.router依赖。</li>
+<li>配置路由：</li>
+</ol>
+<pre><code>myApp.config([&apos;$stateProvider&apos;,function($stateProvider) {
+   $stateProvider
+   .state(&apos;home&apos;,{
+      url:&apos;/home&apos;,
+      templateUrl:&apos;/src/scripts/tpls/ui-router/home.html&apos;,
+      controller:&apos;homeController&apos;,
+      controllerAs:&apos;homeCtrl&apos;,
+      data:{
+         customData:&apos;home自定义数据&apos;
+      }
+   })
+    .state(&apos;employeeParent.employeeDetail&apos;, {
+      url: &apos;/:id&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employeedetail.html&apos;,
+      controller: &apos;employeeDetailController&apos;
+    })
+    .state(&apos;employeeSearch&apos;, {
+      url: &apos;/employeeSearch/:keywords&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employeeSearch.html&apos;,
+      controller: &apos;employeeSearchController&apos;
+    })
+}]);
+</code></pre><p>和ng-router不同的是，ui-router用的是<code>$stateProvider</code>的依赖注入<br>在配置的时候用的是<code>.state</code>进行配置,对于otherwiae的配置可以放在外面单独配置：</p>
+<pre><code>myApp.config(function ($urlRouterProvider) {
+   $urlRouterProvider.otherwise(&apos;/home&apos;);
+});
+</code></pre><ol>
+<li>ui-router的加载路由的标签是 <code>&lt;ui-view&gt;&lt;/ui-view&gt;</code></li>
+</ol>
+<p>具体的代码如下:（demo1.string)</p>
+<pre><code>var demoTpl = require(&apos;../tpls/demo1.string&apos;);
+var commonUtil = require(&apos;../utils/common.util.js&apos;);
+commonUtil.render(demoTpl);
+
+var myApp=angular.module(&apos;myApp&apos;,[&apos;ui.router&apos;]);
+
+myApp.config(function ($urlRouterProvider) {
+   $urlRouterProvider.otherwise(&apos;/home&apos;);
+});
+
+myApp.config([&apos;$stateProvider&apos;,function($stateProvider) {
+   $stateProvider
+   .state(&apos;home&apos;,{
+      url:&apos;/home&apos;,
+      templateUrl:&apos;/src/scripts/tpls/ui-router/home.html&apos;,
+      controller:&apos;homeController&apos;,
+      controllerAs:&apos;homeCtrl&apos;,
+      data:{
+         customData:&apos;home自定义数据&apos;
+      }
+   })
+   .state(&apos;course&apos;,{
+      url:&apos;/course&apos;,
+      templateUrl:&apos;/src/scripts/tpls/ui-router/course.html&apos;,
+      controller:&apos;courseController&apos;,
+      controllerAs:&apos;courseCtrl&apos;,
+      data:{
+         customData:&apos;course自定义数据&apos;
+      }
+   })
+   .state(&apos;employeeParent&apos;, {
+      url: &apos;/employee&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employeeParent.html&apos;,
+      controller: &apos;employeeParentController&apos;
+    })
+    .state(&apos;employeeParent.employee&apos;, {
+      url: &apos;/&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employee.html&apos;,
+      controller: &apos;employeeController&apos;,
+      controllerAs: &apos;employeeCtrl&apos;,
+      resolve: {
+        employeelist: function($http) {
+          return $http.get(&apos;/mock/employee.json&apos;).then(function(res){
+            return res.data.data;
+          });
+        }
+      }
+    })
+    .state(&apos;employeeParent.employeeDetail&apos;, {
+      url: &apos;/:id&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employeedetail.html&apos;,
+      controller: &apos;employeeDetailController&apos;
+    })
+    .state(&apos;employeeSearch&apos;, {
+      url: &apos;/employeeSearch/:keywords&apos;,
+      templateUrl: &apos;/src/scripts/tpls/ui-router/employeeSearch.html&apos;,
+      controller: &apos;employeeSearchController&apos;
+    })
+}]);
+
+
+myApp.controller(&apos;homeController&apos;, [&apos;$scope&apos;, &apos;$rootScope&apos;, &apos;$state&apos;, function($scope, $rootScope, $state){
+  $scope.message = &apos;home page&apos;;
+  $scope.customData2 = $state.get(&apos;course&apos;).data.customData;
+  $scope.customData1 = $state.current.data.customData;
+}]);
+
+myApp.controller(&apos;courseController&apos;, [&apos;$scope&apos;, &apos;$rootScope&apos;, function($scope, $rootScope){
+  var vm  = this;
+  vm.courses = [&apos;html5&apos;, &apos;java&apos;, &apos;android&apos;, &apos;iOS&apos;];
+  $rootScope.color = &apos;red&apos;;
+}]);
+
+myApp.controller(&apos;employeeController&apos;, [&apos;$scope&apos;, &apos;$state&apos;, &apos;$rootScope&apos;, &apos;employeelist&apos;, function($scope, $http, $state, $rootScope, employeelist){
+  var vm  = this;
+  vm.keywords = &quot;&quot;;
+  vm.search = function() {
+    if (vm.keywords) {
+      console.log($state);
+      $state.go(&apos;employeeSearch&apos;, {
+        keywords: vm.keywords
+      })
+    }
+  };
+  vm.reload = function() {
+    $state.reload();
+  };
+
+  vm.employees = employeelist;
+}]);
+
+myApp.controller(&apos;employeeDetailController&apos;,[&apos;$scope&apos;,&apos;$stateParams&apos;,&apos;$http&apos;,function($scope,$stateParams,$http) {
+   $http({
+      url:&apos;/mock/employeedetail.json&apos;,
+      params:{
+         id:$stateParams.id
+      }
+   })
+   .then(function (res) {
+      $scope.employee=res.data.data[0];
+   })
+}]);
+
+myApp.controller(&apos;employeeSearchController&apos;, [&apos;$scope&apos;, &apos;$stateParams&apos;, function($scope, $stateParams){
+  $scope.keywords = $stateParams.keywords;
+}]);
+
+myApp.controller(&apos;employeeParentController&apos;, function($scope){
+  ;
+});
+</code></pre><p>demo1.string的具体代码：</p>
+<pre><code>&lt;table border=&quot;1&quot;&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;header&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;leftMenu&quot;&gt;
+      &lt;a ui-sref=&quot;home&quot;&gt;home&lt;/a&gt;
+      &lt;a ui-sref=&quot;course&quot;&gt;course&lt;/a&gt;
+      &lt;a ui-sref=&quot;employeeParent.employee&quot;&gt;employee&lt;/a&gt;
+    &lt;/td&gt;
+    &lt;td class=&quot;mainContent&quot;&gt;
+      &lt;ui-view&gt;&lt;/ui-view&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot; class=&quot;footer&quot;&gt;footer&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/04/rem实现原理/" itemprop="url">
                   rem的实现原理
                 </a>
@@ -1154,7 +1430,7 @@ compile:function compile(tElement,tAttrs,transclude){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1162,7 +1438,7 @@ compile:function compile(tElement,tAttrs,transclude){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
