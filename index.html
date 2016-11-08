@@ -259,6 +259,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/08/React基础知识/" itemprop="url">
+                  React基础知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-08T21:27:04+08:00" content="2016-11-08">
+              2016-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2>需要安装的依赖包</h2><br> <strong>package.json</strong><br><br>    {<br>      “name”: “es2015”,<br>      “version”: “1.0.0”,<br>      “description”: “”,<br>      “main”: “index.js”,<br>      “scripts”: {<br>        “test”: “echo \”Error: no test specified\” &amp;&amp; exit 1”,<br>        “start”: “node server.js”<br>      },<br>      “author”: “”,<br>      “license”: “ISC”,<br>      “devDependencies”: {<br>        “babel-core”: “^6.18.2”,<br>        “babel-loader”: “^6.2.7”,<br>        “babel-preset-es2015”: “^6.18.0”,<br>        “babel-preset-react”: “^6.16.0”,<br>        “css-loader”: “^0.25.0”,<br>        “extract-text-webpack-plugin”: “^1.0.1”,<br>        “jsx-loader”: “^0.13.2”,<br>        “react-hot-loader”: “^3.0.0-beta.6”,<br>        “react-router”: “^3.0.0”,<br>        “sass-loader”: “^4.0.2”,<br>        “string-loader”: “^0.0.1”,<br>        “style-loader”: “^0.13.1”,<br>        “webpack”: “^1.13.2”,<br>        “webpack-dev-server”: “^1.16.2”<br>      },<br>      “dependencies”: {<br>        “react”: “^15.3.2”,<br>        “react-dom”: “^15.3.2”<br>      }<br>    }<br>如果有需要可以直接复制到package.json文件夹下执行一下<code>npm（cnpm）install</code> 即可<br><br><h2>webpack的配置</h2><br>  <strong>webpack.config.js</strong><br><br>    var webpack = require(‘webpack’);<br>    var ET = require(‘extract-text-webpack-plugin’);<br><br>    module.exports = {<br>      // 入口，并且配置热替换<br>      entry: [<br>         ‘webpack-dev-server/client?<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a>‘,<br>         ‘webpack/hot/only-dev-server’,<br>           <strong>dirname + ‘/src/scripts/app.js’<br>     ],<br><br><br>      // 出口<br>      output: {<br>        path: </strong>dirname + ‘/prd’,<br>        // filename: ‘[name]-[hash].js’<br>        filename: ‘bundle.js’<br>      },<br><br>      // sourcemap<br>      devtool: ‘source-map’,<br>      // 配置模块<br>      module: {<br>        loaders: [<br>          {<br>            test: /.js$/,<br>            loader: ‘babel’<br>          },<br>          {<br>            test: /.jsx$/,<br>            loader: ‘babel’<br>          },<br>          {<br>            test: /.css$/,<br>            loader: ‘style!css’<br>          },<br>          {<br>            test: /.scss$/,<br>            loader: ET.extract(‘style’, ‘css!sass’)<br>          },<br>          {<br>            test: /.string$/,<br>            loader: ‘string’<br>          },<br>          {<br>            test: /.vue$/,<br>            loader: ‘vue’<br>          }<br>        ]<br>      },<br><br>      // vue<br>      vue: {<br>        loaders: {<br>          js: ‘babel’<br>        }<br>      },<br><br>      //plugins定义<br>      plugins: [<br>        // new webpack.optimize.UglifyJsPlugin(),webpack.HotModuleReplacementPlugin()热替换的配置<br>        new ET(‘bundle.css’,{<br>          allChunks:true<br>       }),<br>       new webpack.HotModuleReplacementPlugin()<br>      ]<br><br>    }<br><br><h2>server的配置</h2><br>  <strong>server.js</strong><br><br>    var webpack=require(‘webpack’);<br>    var WebpackDevServer=require(‘webpack-dev-server’);<br>    var config=require(‘./webpack.config.js’);<br><br>    new WebpackDevServer(webpack(config),{<br>       contentBase: __dirname + ‘/prd’,<br>       inline: true,<br>       hot:true,<br>       historyApiFallback:true,<br>       proxy: {<br>          ‘/rest/<em>‘: {<br>            target: ‘<a href="http://localhost:8888" target="_blank" rel="external">http://localhost:8888</a>‘,<br>            secure: false,<br>            pathRewrite: {<br>              ‘^/rest’: ‘’<br>            }<br>          }<br>        }<br>    })<br>    .listen(8080,’localhost’,function (err,result) {<br>       if (err) {<br>          console.log(err);<br>       }else {<br>          console.log(“Listenering at localhost:8080”);<br>       }<br>    })<br><br>为了方便起见我们，把server抽离了出来，单独引用，这样可以引用多个server，方便管理和维护<br><br><br><h2>babelrc的配置</h2><br>  <strong>.babelrc</strong><br>{<br>   “presets”: [“es2015”, “react”]<br>}<br><br><h2>入口文件的配置</h2><br>  <em>*由于react比较坑，在配置文件中的–hot没有作用，所有要在入口文件中添加，如下代码</em></em><br><br>    if (module.hot) {<br>       module.hot.accept();<br>    }<br><br><h2>路由的配置</h2>
+
+<pre><code>import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;//用于加载dom节点到网页上
+import {Router,Route,hashHistory,IndexRoute,Redired} from &apos;react-router&apos;;//Router是路由的根节点，所有的路由都要在Router下，Route用于定义子路由，hashHistory是react新版本必须依赖的。IndexRouter配置在父路由下如果没有具体指定进入哪一个子路由，那么他会自动进入IndexRouter定义的路由之下，Redirect
+</code></pre><p><a href="https://react-guide.github.io/react-router-cn/docs/guides/basics/RouteConfiguration.html" title="路由配置参考文档" target="_blank" rel="external">https://react-guide.github.io/react-router-cn/docs/guides/basics/RouteConfiguration.html</a></p>
+<p>参考代码示例：<a href="https://github.com/ProgrammingAworld/React" target="_blank" rel="external">https://github.com/ProgrammingAworld/React</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/07/ES5新增方法详解/" itemprop="url">
                   ES5新增的Array方法说明
                 </a>
@@ -3246,201 +3365,6 @@ gulp.task(&apos;webserver&apos;,function(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/04/vue--webpack/" itemprop="url">
-                  vue+webpack环境的搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
-              2016-11-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##vue 环境的搭建</p>
-<p>在搭建的babel的基础上，在安装string-loader</p>
-<p>vuex用于实现定义全局变量和对其管理</p>
-<p>自定义组件：可以把css和js定义一个组件</p>
-<p>##webpack环境的搭建</p>
-<ol>
-<li><p><code>cnpm i webpack -g</code>全局安装</p>
-</li>
-<li><p><code>cnpm i webpack -D</code>本地安装</p>
-</li>
-<li><p><code>webpack entry.js  bundle.js</code>(把entry.js编译成bundle.js) </p>
-</li>
-<li><p><code>cnpm i css-loader style-loader -D</code>(加载css文件)</p>
-</li>
-<li><p>配置webpack的配置文件</p>
-</li>
-<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
-<p>9.<code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
-</li>
-<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
-</li>
-<li><code>cpnm i json-server -g</code>全局安装  用于mock数据(json-server ‘mock的路径’ –port 8888)；</li>
-</ol>
-<p><mark>注意：在安装的过程中发生的错误，一般都是网络的原因引起的，在失败之后可以尝试重新安装</mark></p>
- <h2>项目的初始化</h2>
-
-<ul>
-<li>新建一个项目的名称</li>
-<li>进入文件夹下，执行npm init 对项目初始化</li>
-<li><ol>
-<li><p><code>cnpm i webpack -g</code>全局安装</p>
-</li>
-<li><p><code>cnpm i webpack -D</code>本地安装<br>安装完成后可以通过 webpack 待编译的js名称 编译后的js名称(例如：webpack entry.js  bundle.js)</p>
-</li>
-</ol>
-</li>
-<li><ol>
-<li><code>cnpm i css-loader -D</code></li>
-<li><code>cnpm i style-loader -D</code></li>
-<li>通过1和2实现css的样式的加载</li>
-<li><p>配置webpack的配置文件<br><strong>具体代码：</strong></p>
-<pre><code>module.exports={
-   //webpack的入口文件
-   entry:&apos;./entry.js&apos;,
-   //输出的文件夹目录
-   output:{
-      path:__dirname,
-      filename:&apos;bundle.js&apos;
-   },
-   //网页上的scurces下显示的webpack://下的内容
-   devtool:&apos;source-map&apos;,
-   //输出文件夹的目录
-   module:{
-      loaders:[
-         {
-            //选择要编译的文件类型
-            test:/\.css$/,
-            //对css类文件的编译格式
-            loader:&apos;style!css&apos;
-         }
-      ]
-   }
-}
-</code></pre><p>可参照网址：<a href="http://www.jianshu.com/p/42e11515c10f" title="webpack配置网址" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
-</li>
-<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
-</li>
-<li><p><code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
-</li>
-<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
-</li>
-<li>全部安装完成之后通过 w<code>ebpack-dev-server --inline --hot</code>启动服务</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3486,7 +3410,7 @@ gulp.task(&apos;webserver&apos;,function(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -3494,7 +3418,7 @@ gulp.task(&apos;webserver&apos;,function(){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

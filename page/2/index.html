@@ -259,6 +259,201 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/04/vue--webpack/" itemprop="url">
+                  vue+webpack环境的搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
+              2016-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##vue 环境的搭建</p>
+<p>在搭建的babel的基础上，在安装string-loader</p>
+<p>vuex用于实现定义全局变量和对其管理</p>
+<p>自定义组件：可以把css和js定义一个组件</p>
+<p>##webpack环境的搭建</p>
+<ol>
+<li><p><code>cnpm i webpack -g</code>全局安装</p>
+</li>
+<li><p><code>cnpm i webpack -D</code>本地安装</p>
+</li>
+<li><p><code>webpack entry.js  bundle.js</code>(把entry.js编译成bundle.js) </p>
+</li>
+<li><p><code>cnpm i css-loader style-loader -D</code>(加载css文件)</p>
+</li>
+<li><p>配置webpack的配置文件</p>
+</li>
+<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
+</li>
+<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
+</li>
+<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
+<p>9.<code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
+</li>
+<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
+</li>
+<li><code>cpnm i json-server -g</code>全局安装  用于mock数据(json-server ‘mock的路径’ –port 8888)；</li>
+</ol>
+<p><mark>注意：在安装的过程中发生的错误，一般都是网络的原因引起的，在失败之后可以尝试重新安装</mark></p>
+ <h2>项目的初始化</h2>
+
+<ul>
+<li>新建一个项目的名称</li>
+<li>进入文件夹下，执行npm init 对项目初始化</li>
+<li><ol>
+<li><p><code>cnpm i webpack -g</code>全局安装</p>
+</li>
+<li><p><code>cnpm i webpack -D</code>本地安装<br>安装完成后可以通过 webpack 待编译的js名称 编译后的js名称(例如：webpack entry.js  bundle.js)</p>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><code>cnpm i css-loader -D</code></li>
+<li><code>cnpm i style-loader -D</code></li>
+<li>通过1和2实现css的样式的加载</li>
+<li><p>配置webpack的配置文件<br><strong>具体代码：</strong></p>
+<pre><code>module.exports={
+   //webpack的入口文件
+   entry:&apos;./entry.js&apos;,
+   //输出的文件夹目录
+   output:{
+      path:__dirname,
+      filename:&apos;bundle.js&apos;
+   },
+   //网页上的scurces下显示的webpack://下的内容
+   devtool:&apos;source-map&apos;,
+   //输出文件夹的目录
+   module:{
+      loaders:[
+         {
+            //选择要编译的文件类型
+            test:/\.css$/,
+            //对css类文件的编译格式
+            loader:&apos;style!css&apos;
+         }
+      ]
+   }
+}
+</code></pre><p>可参照网址：<a href="http://www.jianshu.com/p/42e11515c10f" title="webpack配置网址" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
+</li>
+<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
+</li>
+<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
+</li>
+<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
+</li>
+<li><p><code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
+</li>
+<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
+</li>
+<li>全部安装完成之后通过 w<code>ebpack-dev-server --inline --hot</code>启动服务</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/04/ui-router的使用/" itemprop="url">
                   ui-router的使用
                 </a>
@@ -1430,7 +1625,7 @@ compile:function compile(tElement,tAttrs,transclude){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1438,7 +1633,7 @@ compile:function compile(tElement,tAttrs,transclude){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
