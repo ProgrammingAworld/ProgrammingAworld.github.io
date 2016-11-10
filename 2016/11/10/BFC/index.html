@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="专业," />
+  <meta name="keywords" content="学习笔记," />
 
 
 
@@ -84,46 +84,34 @@
 
 
 
-<meta name="description" content="##vue 环境的搭建
-在搭建的babel的基础上，在安装string-loader
-vuex用于实现定义全局变量和对其管理
-自定义组件：可以把css和js定义一个组件
-##webpack环境的搭建
+<meta name="description" content="什么是BFC
 
-cnpm i webpack -g全局安装
+BFC（Block formatting contexts），翻译过来就是块级格式化上下文，指的是一种上下文环境，我们暂且不管它为什么叫这么晦涩冗长的名字，先看看哪些情况能形成BFC，然后看看它有哪些特性，这样我们也就知道它是什么了。就像我们学习js的对象一样，了解一个对象的原型，以及它的属性方法，我们也就知道它是什么了。
 
-cnpm i webpack -D本地安装
+如何形成BFC
 
-webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
+根据W3C的定义：浮动元素，绝对定位元">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue+webpack环境的搭建">
-<meta property="og:url" content="http://yoursite.com/2016/11/04/vue--webpack/index.html">
+<meta property="og:title" content="BFC的形成条件和特性分析">
+<meta property="og:url" content="http://yoursite.com/2016/11/10/BFC/index.html">
 <meta property="og:site_name" content="最晚的开始">
-<meta property="og:description" content="##vue 环境的搭建
-在搭建的babel的基础上，在安装string-loader
-vuex用于实现定义全局变量和对其管理
-自定义组件：可以把css和js定义一个组件
-##webpack环境的搭建
+<meta property="og:description" content="什么是BFC
 
-cnpm i webpack -g全局安装
+BFC（Block formatting contexts），翻译过来就是块级格式化上下文，指的是一种上下文环境，我们暂且不管它为什么叫这么晦涩冗长的名字，先看看哪些情况能形成BFC，然后看看它有哪些特性，这样我们也就知道它是什么了。就像我们学习js的对象一样，了解一个对象的原型，以及它的属性方法，我们也就知道它是什么了。
 
-cnpm i webpack -D本地安装
+如何形成BFC
 
-webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
-<meta property="og:updated_time" content="2016-10-31T11:56:41.355Z">
+根据W3C的定义：浮动元素，绝对定位元">
+<meta property="og:updated_time" content="2016-11-10T01:19:06.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue+webpack环境的搭建">
-<meta name="twitter:description" content="##vue 环境的搭建
-在搭建的babel的基础上，在安装string-loader
-vuex用于实现定义全局变量和对其管理
-自定义组件：可以把css和js定义一个组件
-##webpack环境的搭建
+<meta name="twitter:title" content="BFC的形成条件和特性分析">
+<meta name="twitter:description" content="什么是BFC
 
-cnpm i webpack -g全局安装
+BFC（Block formatting contexts），翻译过来就是块级格式化上下文，指的是一种上下文环境，我们暂且不管它为什么叫这么晦涩冗长的名字，先看看哪些情况能形成BFC，然后看看它有哪些特性，这样我们也就知道它是什么了。就像我们学习js的对象一样，了解一个对象的原型，以及它的属性方法，我们也就知道它是什么了。
 
-cnpm i webpack -D本地安装
+如何形成BFC
 
-webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
+根据W3C的定义：浮动元素，绝对定位元">
 
 
 
@@ -144,10 +132,10 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/04/vue--webpack/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/10/BFC/"/>
 
 
-  <title> vue+webpack环境的搭建 | 最晚的开始 </title>
+  <title> BFC的形成条件和特性分析 | 最晚的开始 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +275,7 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
             
             
               
-                vue+webpack环境的搭建
+                BFC的形成条件和特性分析
               
             
           </h1>
@@ -299,8 +287,8 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-04T08:32:47+08:00" content="2016-11-04">
-              2016-11-04
+            <time itemprop="dateCreated" datetime="2016-11-10T09:14:22+08:00" content="2016-11-10">
+              2016-11-10
             </time>
           </span>
 
@@ -313,8 +301,8 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -351,88 +339,26 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
       
 
       
-        <p>##vue 环境的搭建</p>
-<p>在搭建的babel的基础上，在安装string-loader</p>
-<p>vuex用于实现定义全局变量和对其管理</p>
-<p>自定义组件：可以把css和js定义一个组件</p>
-<p>##webpack环境的搭建</p>
-<ol>
-<li><p><code>cnpm i webpack -g</code>全局安装</p>
-</li>
-<li><p><code>cnpm i webpack -D</code>本地安装</p>
-</li>
-<li><p><code>webpack entry.js  bundle.js</code>(把entry.js编译成bundle.js) </p>
-</li>
-<li><p><code>cnpm i css-loader style-loader -D</code>(加载css文件)</p>
-</li>
-<li><p>配置webpack的配置文件</p>
-</li>
-<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
-<p>9.<code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
-</li>
-<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
-</li>
-<li><code>cpnm i json-server -g</code>全局安装  用于mock数据(json-server ‘mock的路径’ –port 8888)；</li>
-</ol>
-<p><mark>注意：在安装的过程中发生的错误，一般都是网络的原因引起的，在失败之后可以尝试重新安装</mark></p>
- <h2>项目的初始化</h2>
-
+        <p></p><h2>什么是BFC</h2><p></p>
+<blockquote>
+<p>BFC（Block formatting contexts），翻译过来就是块级格式化上下文，指的是一种上下文环境，我们暂且不管它为什么叫这么晦涩冗长的名字，先看看哪些情况能形成BFC，然后看看它有哪些特性，这样我们也就知道它是什么了。就像我们学习js的对象一样，了解一个对象的原型，以及它的属性方法，我们也就知道它是什么了。</p>
+</blockquote>
+<p></p><h2>如何形成BFC</h2><p></p>
+<blockquote>
+<p>根据W3C的定义：浮动元素，绝对定位元素，非块级盒子的块级容器（例如inline-blocks，table-cells，and table-captions），以及overflow属性值不是“ visible”（visible是overflow的默认值）的块级盒子（视口除外），这些元素就会为他们的内容创建一个BFC。</p>
+</blockquote>
+<p> <strong>总结如下：</strong></p>
+<pre><code>根元素
+float属性不为none
+position为absolute或fixed
+display为inline-block, table-cell, table-caption, flex, inline-flex
+overflow不为visible
+</code></pre><p></p><h2>BFC的作用</h2><p></p>
 <ul>
-<li>新建一个项目的名称</li>
-<li>进入文件夹下，执行npm init 对项目初始化</li>
-<li><ol>
-<li><p><code>cnpm i webpack -g</code>全局安装</p>
-</li>
-<li><p><code>cnpm i webpack -D</code>本地安装<br>安装完成后可以通过 webpack 待编译的js名称 编译后的js名称(例如：webpack entry.js  bundle.js)</p>
-</li>
-</ol>
-</li>
-<li><ol>
-<li><code>cnpm i css-loader -D</code></li>
-<li><code>cnpm i style-loader -D</code></li>
-<li>通过1和2实现css的样式的加载</li>
-<li><p>配置webpack的配置文件<br><strong>具体代码：</strong></p>
-<pre><code>module.exports={
-   //webpack的入口文件
-   entry:&apos;./entry.js&apos;,
-   //输出的文件夹目录
-   output:{
-      path:__dirname,
-      filename:&apos;bundle.js&apos;
-   },
-   //网页上的scurces下显示的webpack://下的内容
-   devtool:&apos;source-map&apos;,
-   //输出文件夹的目录
-   module:{
-      loaders:[
-         {
-            //选择要编译的文件类型
-            test:/\.css$/,
-            //对css类文件的编译格式
-            loader:&apos;style!css&apos;
-         }
-      ]
-   }
-}
-</code></pre><p>可参照网址：<a href="http://www.jianshu.com/p/42e11515c10f" title="webpack配置网址" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></p>
-</li>
-<li><p><code>cnpm i webpack --devtool source-map -D</code>打开文件树</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -g</code>全局安装(webpack的服务)</p>
-</li>
-<li><p><code>cnpm i webpack-dev-server -D</code>本地安装</p>
-</li>
-<li><p><code>webpack-dev-server --inline --hot -D</code>(监听，可以写到package.json中的build中)</p>
-</li>
-<li><p><code>cnpm i babel-loader babel-preset-es2015 babel-core babel-preset-react -D</code></p>
-</li>
-<li>全部安装完成之后通过 w<code>ebpack-dev-server --inline --hot</code>启动服务</li>
-</ol>
-</li>
+<li>自适应两栏布局 </li>
+<li>清除内部浮动</li>
+<li>放止垂直margin重叠</li>
+<li></li>
 </ul>
 
       
@@ -482,7 +408,7 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
       
         <div class="post-tags">
           
-            <a href="/tags/专业/" rel="tag">#专业</a>
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
           
         </div>
       
@@ -491,17 +417,13 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/04/ui-router的使用/" rel="next" title="ui-router的使用">
-                <i class="fa fa-chevron-left"></i> ui-router的使用
+              <a href="/2016/11/08/React基础知识/" rel="next" title="React基础知识">
+                <i class="fa fa-chevron-left"></i> React基础知识
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/04/webpack和gulp对比/" rel="prev" title="wekpack和gulp对比">
-                wekpack和gulp对比 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +580,7 @@ webpack entry.js  bundle.js(把entry.js编译成bundle.js)">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">项目的初始化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">什么是BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">如何形成BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">BFC的作用</span></a></li></ol></div>
             
           </div>
         </section>
